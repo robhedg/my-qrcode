@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="My QR Code">
+<title>My QR Code</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: -apple-system, sans-serif;
+  background: #f2f2f7;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1rem;
+  gap: 1rem;
+}
+.card {
+  background: white;
+  border-radius: 20px;
+  padding: 2rem 1.5rem;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  width: 100%;
+  max-width: 320px;
+}
+.avatar {
+  width: 56px; height: 56px; border-radius: 50%;
+  background: #e8f0fe;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px; font-weight: 600; color: #1a56db;
+}
+h1 { font-size: 20px; font-weight: 600; color: #1a1a1a; text-align: center; }
+.company { font-size: 14px; color: #555; text-align: center; }
+.divider { width: 100%; height: 1px; background: #f0f0f0; margin: 0.25rem 0; }
+.qr-wrap { background: white; padding: 12px; border-radius: 8px; border: 1px solid #eee; }
+.hint { font-size: 12px; color: #999; text-align: center; }
+.tip {
+  background: white;
+  border-radius: 12px;
+  padding: 0.75rem 1rem;
+  font-size: 12px;
+  color: #666;
+  text-align: center;
+  line-height: 1.6;
+  width: 100%;
+  max-width: 320px;
+  border: 1px solid #eee;
+}
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="avatar">RH</div>
+  <h1>Robert Hedges</h1>
+  <p class="company">Hedges Associates LLC</p>
+  <div class="divider"></div>
+  <div class="qr-wrap" id="qrdiv"></div>
+  <p class="hint">Please scan with camera then Create New Contact</p>
+</div>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script>
+const vcard = "BEGIN:VCARD\nVERSION:3.0\nFN:Robert Hedges\nN:Hedges;Robert;;;\nORG:Hedges Associates LLC\nTEL;TYPE=CELL:+19172518687\nEMAIL:rh@hedgesassoc.com\nURL:https://www.hedgesassoc.com\nURL;TYPE=LinkedIn:https://www.linkedin.com/in/roberthedges1\nEND:VCARD";
+
+new QRCode(document.getElementById("qrdiv"), {
+  text: vcard,
+  width: 240,
+  height: 240,
+  colorDark: "#000000",
+  colorLight: "#ffffff",
+  correctLevel: QRCode.CorrectLevel.M
+});
+</script>
+</body>
+</html>
